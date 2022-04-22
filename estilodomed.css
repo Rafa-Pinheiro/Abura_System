@@ -1,0 +1,336 @@
+.fonte{
+	font-family: 'Dosis', sans-serif;
+}
+
+#canto{
+	width: 500px;
+	height: 480px;
+	margin-left: 1200px;
+	margin-top:-180px;
+}
+
+img{
+	width: 80px;
+	height:50px;
+	position: absolute;
+	margin-top: -20px;
+	margin-right: 20px;
+	outline-color: #ffffff;
+}
+
+.navbar {
+	position: absolute;
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	background-color: #5ed4e3;
+	margin-bottom: 60px;
+	margin-top: 0;
+	height: 60px;
+	width: 1600px;
+	max-width: 1600px;
+}
+
+.camponav {
+	float: left;
+}
+
+.navbar a {
+	font-size: 3vh;
+	display: block;
+	text-align: center;
+	padding: 15px 20px;
+	text-decoration: none;
+	border-width: medium;
+}
+
+#aba1:hover , #aba2:hover {
+	background-color: #E0FFFF;
+}
+
+#aba1, #aba2{
+	color: #ff6ed0;
+	background-color: #ffffff;
+	border-radius: 80px 15px 15px 15px;
+	padding-bottom: 0px;
+	padding-right: 250px;
+	padding-top: 0px;
+	margin-top: -10px;
+	margin-bottom: -30px;
+}
+
+#aba1{
+	margin-right: 50px;
+}
+
+#aba2{
+	margin-left: -130px;
+	color: #004AAD;
+	margin-right: 800px;
+}
+
+#ctexto{
+	text-align: center;
+
+}
+
+#distancia{
+	margin-top: 100px;
+}
+
+.campos2 {
+	margin-top: 36px;
+	margin-bottom: 10px;
+	outline-color: #ffffff;
+	border-style: none;
+	border-bottom: 8px solid ;
+	border-image: linear-gradient(90deg, #5ed4e3 , #004AAD 100%)1;
+	width: 500px;
+	margin-right: 50px;
+	margin-left: 80px;
+}
+
+.campos {
+	margin-top: 36px;
+	margin-bottom: 10px;
+	outline-color: #ffffff;
+	border-style: none;
+	border-bottom: 8px solid ;
+	border-image: linear-gradient(90deg, #5ed4e3 , #004AAD 100%)1;
+	width: 500px;
+	margin-right: 50px;
+	margin-left: 80px;
+}
+
+.campos:focus{
+	top: -1rem;
+}
+
+.radio{
+	margin-right: -700px;
+}
+
+.rd{
+	margin-left: 715px;
+}
+
+#numerores{
+	outline-color: #ffffff;
+	border-style: none;
+	border-bottom: 8px solid;
+	border-image: linear-gradient(90deg, #5ed4e3 , #004AAD 100%)1;
+	width: 250px;
+	margin-right: 50px;
+	margin-left: 80px;
+}
+
+.letrac{
+	color: gray;
+}
+
+.campos:focus::placeholder {
+	position: absolute;
+	margin-top: -2px;
+	top: 0px;
+	left: 0px;
+	pointer-events: none;
+	transition: .5s;
+	font-size: 0.9em;
+	color: #004AAD;
+}
+
+#numerores:focus::placeholder {
+	position: absolute;
+	margin-top: -2px;
+	top: 0px;
+	left: 0px;
+	pointer-events: none;
+	transition: .5s;
+	font-size: 0.9em;
+	color: #004AAD;
+}
+
+h2{
+	text-align: center;
+	margin-right: 300px;
+	position:relative;
+}
+
+h3{
+	margin-top: -50px;
+	margin-left: 715px;
+}
+
+h4{
+	margin-left: 80px;
+}
+
+textarea{
+	position: absolute;
+	outline-color: #ffffff;
+	width: 700px;
+	height: 250px;
+	border: 8px solid #5ed4e3;
+	margin-left: 80px;
+	border-image: linear-gradient(90deg, #5ed4e3 , #004AAD 100%)1;
+}
+
+/****config do madal****/
+
+.container {
+	position: relative;
+	width: 50%;
+	animation-name: example;
+	animation-duration: 2s;
+	animation-fill-mode: forwards;
+	float: right;
+	margin-right: -580px;
+	margin-top: -80px;
+	z-index:9999;
+}
+
+#image {
+	display: block;
+	width: 150px;
+	height: 150px;
+	margin-top: 5px;
+}
+
+.container:hover .overlay {
+	height: 100px;
+}
+
+.text {
+	white-space: nowrap;
+	color: white;
+	font-size: 20px;
+	position: absolute;
+	overflow: hidden;
+	top: 50px;
+	left: 50px;
+	transform: translate(-50%, -50%);
+	-ms-transform: translate(-50%, -50%);
+}
+
+
+
+@keyframes example {
+	from {top: 0px;}
+	to {top: 200px;}
+}
+
+.w3-container{
+	border-style: none;
+	font-size: 25px;
+
+}
+
+.city {display:none}
+
+/*********responsividade*********/
+
+@media (max-width: 1280px)
+{
+	.campos
+{
+	max-width: 300px;
+	max-height: 300px;
+}
+}
+
+@media (max-width: 1280px)
+{
+	.campos2
+{
+	max-width: 300px;
+	max-height: 300px;
+}
+}
+
+@media (max-width: 1280px)
+{
+	#aba1, #aba2
+{
+	max-width: 100px;
+	max-height: 100px;
+}
+}
+
+@media (max-width: 1280px)
+{
+	#aba2
+{
+	margin-right: 910px;
+}
+}
+
+@media (max-width: 1280px)
+{
+	#aba1
+{
+	margin-left: 10px;
+}
+}
+
+@media (max-width: 1280px)
+{
+	textarea
+{
+	width: 500px;
+	height: 200px;
+}
+}
+
+@media (max-width: 1280px)
+{
+	.container
+{
+	margin-right: -400px;
+	margin-top: -50px;
+}
+}
+
+@media (max-width: 1280px)
+{
+	#image
+{
+	margin-top: -25px;
+}
+}
+
+@media (max-width: 1280px)
+{
+	#canto
+{
+	margin-left: 70vw;
+	margin-top: -93px;
+	max-width: 400px;
+	max-height: 400px;
+}
+}
+
+
+@media (max-width: 1280px)
+{
+	.letrac
+{
+	font-size: 1.5em;
+}
+}
+
+@media (max-width: 1280px)
+{
+	h3
+{
+	margin-left: 515px;
+}
+}
+
+@media (max-width: 1280px)
+{
+	.rd
+{
+	margin-left: 585px;
+}
+}
