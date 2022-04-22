@@ -50,9 +50,9 @@ window.onload = function() {
         popupAnchor: markerPopupAnchor.md
             //Link de Crédito imagem - <a href="https://www.flaticon.com/br/icones-gratis/hospital" title="hospital ícones">Hospital ícones criados por Blak1ta - Flaticon</a>
     });
-
     // Geocode three locations, then call the createMap callback
     L.mapquest.geocoding().geocode([chamado, uma[0], uma[1]], createMap);
+
 
     function createMap(error, response) {
         // Initialize the Map
@@ -65,9 +65,8 @@ window.onload = function() {
         for (let i = 0; i < uma.length; i++) {
             L.mapquest.directions().route({
                 start: uma[2],
-                end: hospital,
-                waypoints: [chamado, uma[i]],
-
+                end: hospital[0],
+                waypoints: [chamado, uma[i]]
             });
         }
 
@@ -85,7 +84,8 @@ window.onload = function() {
             var location = response.results[i].locations[0];
             var locationLatLng = location.latLng;
 
-            // Create a marker for each location
+            // Create a marker for each location\\
+            //    Forma Antiga (Rodolfo)
             var qual = (i == 0) ? markeracidente : markerviatura
             var marker = L.marker(locationLatLng, {
                     icon: qual
@@ -93,7 +93,42 @@ window.onload = function() {
                 .bindPopup(location.adminArea5 + ', ' + location.adminArea3);
 
             group.push(marker);
+            //    end\\
+            // var qual = function() {
+            //     switch (response.results[i].location) {
+            //         case chamado:
+            //             markeracidente;
+            //             break;
+            //         case viatura:
+            //             markerviatura;
+            //             break;
+            //         case hospital:
+            //             markerhospital;
+            //             break;
+            //         default:
+            //             alert("Ocorreu um erroo na definição do endereço no mapa! Por favor, tente novamente.");
+            //     };
+            // }
+            var marker = L.marker(locationLatLng, {
+                    icon: qual
+                })
+                .bindPopup(location.adminArea5 + ', ' + location.adminArea3);
+
+            group.push(marker);
+            //end\\
         }
         return L.featureGroup(group);
     };
 }
+
+
+
+//------------------------------- Gia De Commit terminal/git ---------------------------------------\\
+
+// // Para Abrir novo projeto\\ \\
+
+// git init / git status/ git add . / git commmit -m "mensagem de atualização" / código colado do git!!!
+
+// //Para Atualizar o Projeto\\ \\
+
+// git init / git status/ git add . / git commmit -m "mensagem de atualização" /  git push

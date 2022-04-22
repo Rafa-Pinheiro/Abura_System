@@ -1,4 +1,8 @@
-function atribuir() {
+window.onload = function() {
+    const atribuir = document.getElementById('sendCall');
+};
+
+atrubuir.addEventListener("click", function atribuir() {
     alert("teste");
     const log = document.getElementById('logradouro').value;
     const num = toString(document.getElementById('num').value);
@@ -8,7 +12,7 @@ function atribuir() {
     const est = document.getElementById('estado').value;
     const pai = document.getElementById('pais').value;
     buscar();
-};
+});
 
 const endereco = {
     this: logradouro = log,
