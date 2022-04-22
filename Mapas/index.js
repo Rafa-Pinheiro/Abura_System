@@ -53,6 +53,7 @@ window.onload = function() {
     //             for (var i = 0; i < returnbd.length; i++) {
     //                 buscarLocalizacao(returnbd[i]);
     //                 featureGroup;
+
     //             }
 
     //             break;

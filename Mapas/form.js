@@ -1,20 +1,12 @@
-const log;
-const num;
-const bai;
-const cit;
-const cep;
-const est;
-const pai;
-
 function atribuir() {
     alert("teste");
-    log = document.getElementById('logradouro').value;
-    num = toString(document.getElementById('num').value);
-    bai = document.getElementById('bairro').value;
-    cit = document.getElementById('cidade').value;
-    cep = toString(document.getElementById('cep').value);
-    est = document.getElementById('estado').value;
-    pai = document.getElementById('pais').value;
+    const log = document.getElementById('logradouro').value;
+    const num = toString(document.getElementById('num').value);
+    const bai = document.getElementById('bairro').value;
+    const cit = document.getElementById('cidade').value;
+    const cep = toString(document.getElementById('cep').value);
+    const est = document.getElementById('estado').value;
+    const pai = document.getElementById('pais').value;
     buscar();
 };
 
