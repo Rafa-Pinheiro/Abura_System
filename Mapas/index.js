@@ -1,15 +1,9 @@
 window.onload = function() {
+    var chamado = 'Avenida Paula Ferreira, 3108, Pirituba, São Paulo, SP';
+    var uma = ['Rua Manoel Ribeiro dos Santos,101, Itanhaém, SP', 'Avenida Estados Unidos, 859, Jardim São fernando, Itanhaém SP', 'Rua Oswaldo Cruz, 277, Boqueirão, Santos, SP'];
+    var hospital = ['Rua Valter José Alves, 485, Nova Mirim, Praia Grande, SP'];
+
     L.mapquest.key = 'lYtoHgx2sLGH5pRJqqCgomNI1xQuUJfh'; //objeto chave mapquest
-
-    // -------------------------------------Variavéis Globais-------------------------------------- \\
-    // var chamado = index.js(endereco); //retorno do bd
-    // var uma = index.js(viatura); // retorno das localizações das viaturas daquele tipo no bd
-    var escolha = document.getElementById('uma').value;
-    var returnbd = 0; //Seria o retorno das localizações das viaturas.
-    //Generate the feature group containing markers from the geocoded locations
-    var featureGroup = generateMarkersFeatureGroup(response);
-
-    // Create a marker for each location          
 
     var markerSize = {
         'sm': [28, 35],
@@ -29,153 +23,77 @@ window.onload = function() {
 
     var markeracidente = L.icon({
         // https://www.flaticon.com/br/icone-gratis/ligacao-de-emergencia_2991158?term=emergencia&related_id=2991158
-        iconUrl: 'https://www.flaticon.com/br/icone-gratis/ligacao-de-emergencia_2991158?term=emergencia&related_id=2991158',
-        iconRetinaUrl: 'https://www.flaticon.com/br/icone-gratis/ligacao-de-emergencia_2991158?term=emergencia&related_id=2991158',
+        iconUrl: 'img/emergencia.ico',
+        iconRetinaUrl: 'img/emergencia.ico',
         iconSize: markerSize.sm,
         iconAnchor: markerAnchor.sm,
         popupAnchor: markerPopupAnchor.sm
+            //Link de Crédito imagem - <a href="https://www.flaticon.com/br/icones-gratis/emergencia" title="emergência ícones">Emergência ícones criados por Freepik - Flaticon</a>
     });
 
     var markerviatura = L.icon({
         //https://www.flaticon.com/br/icone-premium/ambulancia_2991996?term=ambulanci&page=1&position=14&page=1&position=14&related_id=2991996&origin=search
-        iconUrl: 'https://www.flaticon.com/br/icone-premium/ambulancia_2991996?term=ambulanci&page=1&position=14&page=1&position=14&related_id=2991996&origin=search',
-        iconRetinaUrl: 'https://www.flaticon.com/br/icone-premium/ambulancia_2991996?term=ambulanci&page=1&position=14&page=1&position=14&related_id=2991996&origin=search',
+        iconUrl: 'img/ambulancia.ico',
+        iconRetinaUrl: 'img/ambulancia.ico',
         iconSize: markerSize.md,
         iconAnchor: markerAnchor.md,
         popupAnchor: markerPopupAnchor.md
+            //Link de Crédito imagem - <a href="https://www.flaticon.com/br/icones-gratis/ambulancia" title="ambulância ícones">Ambulância ícones criados por vectorsmarket15 - Flaticon</a>
     });
-    // -----------------------------------Fim Variavéis Globais------------------------------------ \\
 
-    // Disposição das ambulâncias no mapa
-    // uma.AddEventListener(onchange, function(escolha) {
-    //     switch (escolha) {
-    //         case 'A':
-    //             for (var i = 0; i < returnbd.length; i++) {
-    //                 buscarLocalizacao(returnbd[i]);
-    //                 featureGroup;
+    var markerhospital = L.icon({
+        //https://www.flaticon.com/br/icone-premium/hospital_2866287?term=hospital&page=1&position=2&page=1&position=2&related_id=2866287&origin=search
+        iconUrl: 'img/hospital.ico',
+        iconRetinaUrl: 'img/hospital.ico',
+        iconSize: markerSize.md,
+        iconAnchor: markerAnchor.md,
+        popupAnchor: markerPopupAnchor.md
+            //Link de Crédito imagem - <a href="https://www.flaticon.com/br/icones-gratis/hospital" title="hospital ícones">Hospital ícones criados por Blak1ta - Flaticon</a>
+    });
 
-    //             }
+    // Geocode three locations, then call the createMap callback
+    L.mapquest.geocoding().geocode([chamado, uma[0], uma[1]], createMap);
 
-    //             break;
-    //         case 'B':
-    //             break;
-    //         case 'C':
-    //             break;
-    //         case 'D':
-    //             break;
-    //         default:
-    //             alert('Selecione o tipo de a,bulância para o caso.');
-    //             uma.focus();
-    //             break;
-    //     }
-    // });
-    // createMap();
-
-    // //Buscando Localização e criando mapa
-    // function buscarLocalizacao(returnbd) {
-    //     L.mapquest.geocoding().geocode([Itanhaém, BR], createMap);
-    // }
-
-    // Inicializando o Mapa e atribuindo à div 'map'
     function createMap(error, response) {
+        // Initialize the Map
         var map = L.mapquest.map('map', {
             layers: L.mapquest.tileLayer('map'),
             center: [0, 0],
             zoom: 12
         });
 
+        for (let i = 0; i < uma.length; i++) {
+            L.mapquest.directions().route({
+                start: uma[2],
+                end: hospital,
+                waypoints: [chamado, uma[i]],
+
+            });
+        }
+
+        // Generate the feature group containing markers from the geocoded locations
+        var featureGroup = generateMarkersFeatureGroup(response);
+
         // Add markers to the map and zoom to the features
         featureGroup.addTo(map);
-        map.fitBounds(featureGroup.getBounds())
+        map.fitBounds(featureGroup.getBounds());
+    }
 
-        function generateMarkersFeatureGroup(response) {
-            var group = [];
-            for (var i = 0; i < response.results.length; i++) {
-                var location = response.results[i].locations[0];
-                var locationLatLng = location.latLng;
-                // console.log(response.results[i].locations[0])
-                var qual = (i == 0) ? markeracidente : markerviatura
-                var marker = L.marker(locationLatLng, {
-                        icon: qual
-                    })
-                    .bindPopup(location.adminArea5 + ', ' + location.adminArea3)
-                group.push(marker);
-            }
+    function generateMarkersFeatureGroup(response) {
+        var group = [];
+        for (var i = 0; i < response.results.length; i++) {
+            var location = response.results[i].locations[0];
+            var locationLatLng = location.latLng;
 
-            /* rota entre endereços*/
-            // L.mapquest.directions().setLayerOptions({
-            //   startMarker: {
-            //     icon: 'circle',
-            //   },
-            //   endMarker: {
-            //     icon: 'circle',
-            //     iconOptions: {
-            //       size: 'sm',
-            //       primaryColor: '#e9304f',
-            //       secondaryColor: '#e9304f',
-            //       symbol: 'B'
-            //     }
-            //   },
-            //   routeRibbon: {
-            //     color: "#2aa6ce",
-            //     opacity: 1.0,
-            //     showTraffic: true
-            //   },
-            //   alternateRouteRibbon: {
-            //     opacity: 1.0
-            //   },
-            // });
-            L.mapquest.directions().route({
-                start: uma,
-                end: chamado
-            })
+            // Create a marker for each location
+            var qual = (i == 0) ? markeracidente : markerviatura
+            var marker = L.marker(locationLatLng, {
+                    icon: qual
+                })
+                .bindPopup(location.adminArea5 + ', ' + location.adminArea3);
+
+            group.push(marker);
         }
         return L.featureGroup(group);
-    }
-    //https://developer.mapquest.com/documentation/mapquest-js/v1.3/l-mapquest-directions-route/ - rota documentação
-    // https://developer.mapquest.com/documentation/directions-api/route/post/ - Atribultos da rota
-
-
-    // }
-
-
-    /*
-     window.onload = function() {
-      L.mapquest.key = 'lYtoHgx2sLGH5pRJqqCgomNI1xQuUJfh';
-
-      L.mapquest.geocoding().geocode('Boston, MA', createMap);
-
-      function createMap(error, response) {
-        var location = response.results[0].locations[0];
-        var latLng = location.displayLatLng;
-        var map = L.mapquest.map('map', {
-          center: latLng,
-          layers: L.mapquest.tileLayer('map'),
-          zoom: 14
-        });
-
-        var customIcon = L.mapquest.icons.circle({
-          primaryColor: '#3b5998'
-        });
-
-        L.marker(latLng, { icon: customIcon }).addTo(map);
-      }
-    }*/
-
-    /* rota entre endereços*/
-
-    // window.onload = function() {
-    //   L.mapquest.key = 'lYtoHgx2sLGH5pRJqqCgomNI1xQuUJfh';
-
-    //   var map = L.mapquest.map('map2', {
-    //     center: [-24.1765857,-46.7852608],
-    //     layers: L.mapquest.tileLayer('map'),
-    //     zoom: 18
-    //   });
-
-
-    //   L.mapquest.directions().route({
-    //     start: 'Rua Oscar Simões de Carvalho, 415, Itanhaém',
-    //     end: 'Avenida São Paulo, 1901, Mongaguá'
-    //   });
+    };
 }
