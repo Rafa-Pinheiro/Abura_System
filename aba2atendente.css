@@ -1,0 +1,194 @@
+img{
+	width: 80px;
+	height:50px;
+	position: absolute;
+	margin-top: -20px;
+	margin-right: 20px;
+	outline-color: #ffffff;
+}
+
+.navbar {
+	position: absolute;
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	background-color: #70eec2;
+	margin-bottom: 60px;
+	margin-top: 0;
+	height: 60px;
+	width: 1600px;
+	max-width: 1600px;
+}
+
+.camponav {
+	float: left;
+}
+
+.navbar a {
+	font-size: 3vh;
+	display: block;
+	text-align: center;
+	padding: 15px 20px;
+	text-decoration: none;
+	border-width: medium;
+}
+
+#aba1:hover , #aba2:hover {
+	background-color: #7FFFD4;
+}
+
+#aba1, #aba2{
+	color: #008037;
+	background-color: #ffffff;
+	border-radius: 80px 15px 15px 15px;
+	padding-bottom: 0px;
+	padding-right: 250px;
+	padding-top: 0px;
+	margin-top: -10px;
+	margin-bottom: -30px;
+}
+
+#aba1{
+	margin-right: 50px;
+}
+
+#aba2{
+	margin-left: -130px;
+	color: #ff6ed0;
+	margin-right: 800px;
+}
+
+#canto{
+	width: 500px;
+	height: 450px;
+	margin-left: 1200px;
+	margin-top: -35px;
+}
+
+.fonte{
+	font-family: 'Dosis', sans-serif;
+}
+
+.distancia3{
+	margin-left: 1100px;
+}
+
+.distancia2{
+	margin-top: 170px;
+}
+
+.distancia{
+	margin-top: 30px;
+}
+
+.campos{
+	text-align: center;
+	border-width: 2px;
+	border-color: #008037;
+	background-color:  #70eec2;
+	border-radius: 70px;
+	outline-color: #008037;
+	width: 330px;
+	height: 70px;
+}
+
+/****config do madal****/
+
+.container {
+	position: relative;
+	width: 50%;
+	animation-name: example;
+	animation-duration: 2s;
+	animation-fill-mode: forwards;
+	float: right;
+	margin-right: -580px;
+	margin-top: -80px;
+	z-index:9999;
+}
+
+#image {
+	display: block;
+	width: 150px;
+	height: 150px;
+	margin-top: 50px;
+}
+
+.text {
+	white-space: nowrap;
+	color: white;
+	font-size: 20px;
+	position: absolute;
+	overflow: hidden;
+	top: 50px;
+	left: 50px;
+	transform: translate(-50%, -50%);
+	-ms-transform: translate(-50%, -50%);
+}
+
+@keyframes example {
+	from {top: 0px;}
+	to {top: 200px;}
+}
+
+.w3-container{
+	border-style: none;
+	font-size: 25px;
+}
+
+.city {display:none}
+
+/*********responsividade*********/
+
+@media (max-width: 1280px)
+{
+	#aba1, #aba2
+{
+	max-width: 100px;
+	max-height: 100px;
+}
+}
+
+@media (max-width: 1280px)
+{
+	.container
+{
+	margin-right: -400px;
+	margin-top: -50px;
+}
+}
+
+@media (max-width: 1280px)
+{
+	#aba2
+{
+	margin-right: 910px;
+}
+}
+
+@media (max-width: 1280px)
+{
+	#aba1
+{
+	margin-left: 10px;
+}
+}
+
+@media (max-width: 1280px)
+{
+	#image
+{
+	margin-top: -50px;
+}
+}
+
+@media (max-width: 1280px)
+{
+	#canto
+{
+	margin-left: 70vw;
+	margin-top: -120px;
+	max-width: 400px;
+	max-height: 400px;
+}
+}
