@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script>
+		window.onload =function (){
+			
+			
+			var local = {
+					  "locations": [
+					    "Rua Oscar Simões de Carvalho, 415 - Cidade Anchieta, Itanhaém - SP, 11740-000, BR",
+					    "Rua Cidade de Iguape, 917 - Cidade Anchieta, Itanhaém - SP, 11740-000, BR"
+					  ],
+					  "options": {
+					    "allToAll": false
+					  }
+					};
+			var url = 'http://www.mapquestapi.com/directions/v2/routematrix?key=lYtoHgx2sLGH5pRJqqCgomNI1xQuUJfh&json='+JSON.stringify(local);			
+
+			
+				    var xmlHttp = new XMLHttpRequest();
+				    xmlHttp.open( "GET", url, false ); // false for synchronous request
+				    xmlHttp.send( null );
+				    console.log(JSON.parse(xmlHttp.responseText));
+				
+		}
+	</script>
+</head>
+<body>
+		<button id="vai">Teste</button>
+</body>
+</html>
