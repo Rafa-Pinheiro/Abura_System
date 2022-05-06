@@ -3,6 +3,31 @@ window.onload = function () {
     var uma = ['Rua Manoel Ribeiro dos Santos,101, Itanhaém, SP', 'Avenida Estados Unidos, 859, Jardim São fernando, Itanhaém SP', 'Rua Oswaldo Cruz, 277, Boqueirão, Santos, SP'];
     var hospital = ['Rua Valter José Alves, 485, Nova Mirim, Praia Grande, SP'];
 
+
+    // FUNÇÃO QUE RETORNA OS DADOS DA ROTA
+    var local = {
+        "locations": [
+            uma[0],
+            hospital[0], //ENDEREÇOS DA MATRIZ
+            chamado
+        ],
+        "options": {
+            "allToAll": true
+        }
+    };
+    var url = 'http://www.mapquestapi.com/directions/v2/routematrix?key=lYtoHgx2sLGH5pRJqqCgomNI1xQuUJfh&json='+JSON.stringify(local);			
+    
+            	
+    var xmlHttp = new XMLHttpRequest();
+    xmlHttp.open( "GET", url, false ); // false for synchronous request
+    xmlHttp.send( null );
+    var retorno = (JSON.parse(xmlHttp.responseText)); //LINHA DE ARMAZENAMENTO DO RETORNO DO TEMPO JÁ EM JSON
+    var hor = parseInt(((retorno.time[0][1] + retorno.time[1][0])/60)/60);
+    var min = parseInt(((retorno.time[0][1] + retorno.time[1][0])/60) - (hor*60));
+    var sec = (((retorno.time[0][1] + retorno.time[1][0])/60)-(min+ (hor*60)))*60;
+    console.log(retorno, hor + ':' + min + ":" + sec);
+
+
     /* 
     //estrutura For, que gerará vetores para chamadas,umas e unidades de saúde;
     o for fará a pesquisa nas tabelas do bd, e como serão armazenados 
@@ -95,13 +120,61 @@ window.onload = function () {
             zoom: 12
         });
 
+
+        L.mapquest.directions().setLayerOptions({
+            startMarker: {
+              icon: markerviatura
+            },
+            endMarker: {
+              icon: markerhospital
+            },
+            waypoints: {
+              icon: markeracidente
+            },
+            
+            routeRibbon: {
+                color: "#ccc",
+                opacity: 1.0,
+                showTraffic: false
+            }
+        });
         for (let i = 0; i < uma.length; i++) {
+            
+            //CÓDIGO ORIGINAL DOS ICONES
+            /*
+            var directions = L.mapquest.directions();
+            directions.setLayerOptions({
+            startMarker: {
+                icon: 'circle',
+                iconOptions: {
+                size: 'sm',
+                primaryColor: '#1fc715',
+                secondaryColor: '#1fc715',
+                symbol: 'A'
+                }
+            },
+            endMarker: {
+                icon: 'circle',
+                iconOptions: {
+                size: 'sm',
+                primaryColor: '#e9304f',
+                secondaryColor: '#e9304f',
+                symbol: 'B'
+                }
+            },
+            routeRibbon: {
+                color: "#2aa6ce",
+                opacity: 1.0,
+                showTraffic: false
+            }
+            });
+            */
             L.mapquest.directions().route({
-                start: uma[i],
+                start: uma[0],
                 end: hospital[0],
                 waypoints: [chamado]
-            });
-        }
+            })
+        };
 
         // Generate the feature group containing markers from the geocoded locations
         var featureGroup = generateMarkersFeatureGroup(response);
@@ -145,7 +218,7 @@ window.onload = function () {
             var marker = L.marker(locationLatLng, {
                 icon: qual
             })
-                .bindPopup(location.adminArea5 + ', ' + location.adminArea3);
+                .bindPopup(location.adminArea5 + ', ' + location.adminArea3); //CLIQUE COM O TEMPO, ALTERAR AQUI
 
             group.push(marker);
             //end\\
@@ -158,8 +231,9 @@ window.onload = function () {
 
 
 }
-
-
+//------------------------------- Links Documentação importantes ---------------------------------------\\
+//ICONES NA ROTA
+// https://developer.mapquest.com/documentation/mapquest-js/v1.0/examples/directions-with-custom-icons-and-ribbons/
 
 //------------------------------- Gia De Commit terminal/git ---------------------------------------\\
 
@@ -170,3 +244,6 @@ window.onload = function () {
 // //Para Atualizar o Projeto\\ \\
 
 // git init / git status/ git add . / git commmit -m "mensagem de atualização" /  git push
+
+
+// git push --set-upstream Abura_System master
