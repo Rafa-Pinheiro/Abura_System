@@ -1,0 +1,171 @@
+.fonte {
+    font-family: 'Dosis', sans-serif;
+}
+
+#canto {
+    width: 500px;
+    height: 450px;
+    margin-left: 1200px;
+    margin-top: -225px
+}
+
+.renatinha {
+    width: 80px;
+    height: 50px;
+    position: absolute;
+    margin-top: -20px;
+    margin-right: 20px;
+    outline-color: #ffffff;
+}
+
+.navbar {
+    position: absolute;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #5ed4e3;
+    margin-bottom: 60px;
+    margin-top: 0;
+    height: 60px;
+    width: 1600px;
+    max-width: 1600px;
+}
+
+.camponav {
+    float: left;
+}
+
+.navbar a {
+    font-size: 3vh;
+    display: block;
+    text-align: center;
+    padding: 15px 20px;
+    text-decoration: none;
+    border-width: medium;
+}
+
+#aba1:hover,
+#aba2:hover,
+#aba3:hover {
+    background-color: #E0FFFF;
+}
+
+#aba1,
+#aba2,
+#aba3 {
+    color: #004AAD;
+    background-color: #ffffff;
+    border-radius: 80px 15px 15px 15px;
+    padding-bottom: 0px;
+    padding-right: 250px;
+    padding-top: 0px;
+    margin-top: 19px;
+}
+
+#aba1 {
+    margin-right: 50px;
+}
+
+#aba2 {
+    margin-left: -130px;
+    margin-right: 800px
+}
+
+#aba3 {
+    margin-left: 815px;
+    margin-top: -38px;
+    color: #ff6ed0;
+}
+
+
+/****config do madal****/
+
+.container {
+    position: relative;
+    width: 50%;
+    animation-name: example;
+    animation-duration: 2s;
+    animation-fill-mode: forwards;
+    float: right;
+    margin-right: -580px;
+    margin-top: -80px;
+    z-index: 9999;
+}
+
+#image {
+    display: block;
+    width: 150px;
+    height: 150px;
+    margin-top: 400px;
+    float: right;
+    margin-right: 1vw;
+}
+
+.container:hover .overlay {
+    height: 100px;
+}
+
+.text {
+    white-space: nowrap;
+    color: white;
+    font-size: 20px;
+    position: absolute;
+    overflow: hidden;
+    top: 50px;
+    left: 50px;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+}
+
+@keyframes example {
+    from {
+        top: 0px;
+    }
+    to {
+        top: 200px;
+    }
+}
+
+.w3-container {
+    border-style: none;
+    font-size: 25px;
+}
+
+.city {
+    display: none
+}
+
+
+/*Teste*/
+
+#map {
+    position: absolute;
+    margin-top: 7.5vh;
+    z-index: 1;
+    width: 100%;
+    height: 92.5vh;
+}
+
+
+/* #seletores {
+    border: solid 1vh black;
+    margin-right: 4vw;
+    z-index:;
+} */
+
+#amb {
+    position: relative;
+    z-index: 2;
+    margin-left: 65vw;
+    margin-top: 8vh;
+    background-color: rgba(200, 200, 200, 0.8);
+    padding: 1vh;
+}
+
+#uma {
+    position: relative;
+    z-index: 2;
+    float: right;
+    margin-right: 1.7vw;
+}
